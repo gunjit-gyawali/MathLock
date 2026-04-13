@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Math Lock",
+  "version": "1.0",
+  "description": "makes you solve math before going to distracting sites",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["gate.html", "gate.js", "gate.css"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}

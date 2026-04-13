@@ -1,0 +1,106 @@
+body {
+  background: #111;
+  color: #ddd;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+#box {
+  max-width: 380px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  padding: 30px;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+#box h1 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#site-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 25px;
+  font-family: monospace;
+}
+
+#question {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  background: #222;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  font-family: monospace;
+}
+
+#options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* buttons are slightly different sizes lol */
+.opt {
+  padding: 14px 10px;
+  background: #222;
+  border: 1px solid #444;
+  color: #ccc;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.opt:hover {
+  background: #2a2a2a;
+}
+
+.opt.correct {
+  background: #1a3a1a;
+  border-color: green;
+  color: #5c5;
+  pointer-events: none;
+}
+
+.opt.wrong {
+  background: #3a1a1a;
+  border-color: #c44;
+  color: #f66;
+  pointer-events: none;
+}
+
+.opt.dim {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+#feedback {
+  font-size: 13px;
+  min-height: 18px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+#feedback.ok { color: #5c5; }
+#feedback.err { color: #f55; }
+
+#skip-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+#skip-btn:hover {
+  color: #888;
+}

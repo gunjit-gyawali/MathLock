@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Math Lock</title>
+</head>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 300px;
+  background: #111;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+.header {
+  padding: 14px;
+  border-bottom: 1px solid #222;
+}
+
+.header h2 {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.header p {
+  color: white;
+  font-size: 11px;
+}
+
+
+.current-row {
+  margin: 12px;
+  padding: 10px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.current-row .info { flex: 1; min-width: 0; }
+.current-row .label { font-size: 10px; color: #ffffff; margin-bottom: 2px; }
+.current-row .host {
+  font-family: monospace;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current-row .host.empty { color: #444; font-style: italic; }
+
+#block-btn {
+  padding: 6px 12px;
+  background: #333;
+  border: 1px solid #444;
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#block-btn:hover { background: #3a3a3a; }
+
+#block-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.section-title {
+  padding: 0 12px;
+  margin-bottom: 6px;
+  font-size: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#sites-list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0 12px;
+  margin-bottom: 10px;
+}
+
+.site-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  background: #1a1a1a;
+  border: 1px solid #222;
+  border-radius: 5px;
+}
+
+.site-row .name {
+  flex: 1;
+  font-family: monospace;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-row .rm {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+}
+.site-row .rm:hover { color: #c44; }
+
+.empty-msg {
+  text-align: center;
+  padding: 20px 0;
+  color: #444;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+
+.add-row {
+  display: flex;
+  gap: 6px;
+  padding: 0 12px 12px;
+}
+
+.add-row input {
+  flex: 1;
+  padding: 7px 9px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 12px;
+  outline: none;
+}
+
+.add-row input::placeholder { color: #444; }
+
+.add-row button {
+  padding: 7px 11px;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.add-row button:hover { background: #333; }
+
+
+#toast {
+  display: none;
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #ffffff;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#toast.err { background: #7a1a1a; }
+
+</style>
+<body>
+
+<div class="header">
+  <h2>Math Gate</h2>
+  <p>block sites with math puzzles</p>
+</div>
+
+<div class="current-row">
+  <div class="info">
+    <div class="label">current site</div>
+    <div class="host empty" id="current-host">—</div>
+  </div>
+  <button id="block-btn" disabled>+ Block</button>
+</div>
+
+<div class="section-title">blocked sites</div>
+<div id="sites-list"></div>
+
+<div class="add-row">
+  <input type="text" id="add-input" placeholder="reddit.com" />
+  <button id="add-btn">Add</button>
+</div>
+
+<div id="toast"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>
