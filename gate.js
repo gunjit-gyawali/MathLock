@@ -67,7 +67,7 @@
       container.appendChild(btn);
     });
   }
-
+ 
   function check(val, btn) {
 
     document.querySelectorAll(".opt").forEach(function(b) {

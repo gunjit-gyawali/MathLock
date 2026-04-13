@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       } catch(e) {
         sendResponse({ blocked: false });
         return;
-      }
+      } 
 
       var isBlocked = blocked.some(s => hostname === s || hostname.endsWith("." + s));
       var passedUntil = passed[hostname];
